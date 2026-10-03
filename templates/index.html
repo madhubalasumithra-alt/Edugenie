@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ app_name }} | AI Learning Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}" />
+  <script src="{{ url_for('static', path='/app.js') }}" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Google Gemini powered learning assistant</p>
+        <h1>EduGenie</h1>
+        <p class="subtitle">Ask, understand, revise, quiz yourself, and build a learning path from one simple workspace.</p>
+      </div>
+      <a class="api-link" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+    </section>
+
+    <section class="card workspace">
+      <div class="field-grid">
+        <label>
+          <span>Task</span>
+          <select id="task">
+            <option value="qa">Ask a question</option>
+            <option value="explain">Explain a concept</option>
+            <option value="quiz">Generate a quiz</option>
+            <option value="summarize">Summarize text</option>
+            <option value="learn">Recommend a learning path</option>
+          </select>
+        </label>
+
+        <label id="levelWrap" class="hidden">
+          <span>Current level</span>
+          <select id="level">
+            <option value="auto">Auto</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="input-label" for="userInput">Your input</label>
+      <textarea id="userInput" rows="9" maxlength="20000" placeholder="Example: Explain the Pythagoras theorem in simple words"></textarea>
+      <div class="form-footer">
+        <span id="charCount">0 / 20000</span>
+        <button id="submitBtn" type="button">Generate</button>
+      </div>
+    </section>
+
+    <section id="status" class="status hidden" aria-live="polite"></section>
+    <section id="result" class="card result hidden" aria-live="polite"></section>
+  </main>
+</body>
+</html>
